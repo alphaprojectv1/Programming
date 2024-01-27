@@ -6,7 +6,7 @@ typedef long long ll;
 using namespace std;
 const int N=1e5+5;
 vector<int> v[N];
-bool vis[N];
+bool vis[N]={0};
 int n,e;
 void dfs(int src)
 {
