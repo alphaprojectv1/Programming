@@ -47,6 +47,34 @@
 //     cout << answer << endl;
 //     return 0;
 // }
+// #include<bits/stdc++.h>
+// #define nl "\n"
+// #define blk " "
+// typedef long long ll;
+// // #define ll long long
+// using namespace std;
+// const int N=1e5+5;
+// int main()
+// {
+//   string s;
+//   cin>>s;
+//   int c[26]={0};
+//   for(auto i:s)
+//   {
+//     //cout<<i<<blk;
+//     int j=(int)i;
+//     //cout<<j<<blk;
+//     c[j-65]++;
+//   }
+//   if(s.size()!=4 || c[s[0]-65]!=2 ||c[s[1]-65]!=2 || c[s[2]-65]!=2 || c[s[3]-65]!=2 )
+//   {
+//     cout<<"No";
+//   }
+//   else 
+//   {
+//     cout<<"Yes";
+//   }
+// }
 #include<bits/stdc++.h>
 #define nl "\n"
 #define blk " "
@@ -54,24 +82,26 @@ typedef long long ll;
 // #define ll long long
 using namespace std;
 const int N=1e5+5;
-int main()
+int fun(int n) 
 {
-  string s;
-  cin>>s;
-  int c[26]={0};
-  for(auto i:s)
+  int sum=0;
+  while(n!=0)
   {
-    //cout<<i<<blk;
-    int j=(int)i;
-    //cout<<j<<blk;
-    c[j-65]++;
+    sum=sum+n%10;
+    n/=10;
   }
-  if(s.size()!=4 || c[s[0]-65]!=2 ||c[s[1]-65]!=2 || c[s[2]-65]!=2 || c[s[3]-65]!=2 )
+  if(sum>=10)
   {
-    cout<<"No";
+    return fun(sum);
   }
-  else 
+  else
   {
-    cout<<"Yes";
+    return sum;
   }
+}
+int main() 
+{
+   int x;
+   cin>>x;
+   cout<<fun(x)<<endl;
 }
