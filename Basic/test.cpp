@@ -103,5 +103,5 @@ int main()
 {
    int x;
    cin>>x;
-   cout<<fun(x)<<endl;
+   cout<<fun(x)<<nl;
 }
