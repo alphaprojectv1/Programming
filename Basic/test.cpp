@@ -75,33 +75,103 @@
 //     cout<<"Yes";
 //   }
 // }
-#include<bits/stdc++.h>
-#define nl "\n"
-#define blk " "
-typedef long long ll;
-// #define ll long long
+// #include<bits/stdc++.h>
+// #define nl "\n"
+// #define blk " "
+// typedef long long ll;
+// // #define ll long long
+// using namespace std;
+// const int N=1e5+5;
+// int fun(int n) 
+// {
+//   int sum=0;
+//   while(n!=0)
+//   {
+//     sum=sum+n%10;
+//     n/=10;
+//   }
+//   if(sum>=10)
+//   {
+//     return fun(sum);
+//   }
+//   else
+//   {
+//     return sum;
+//   }
+// }
+// int main() 
+// {
+//    int x;
+//    cin>>x;
+//    cout<<fun(x)<<nl;
+// }
+#include <bits/stdc++.h>
 using namespace std;
-const int N=1e5+5;
-int fun(int n) 
+class Edge
 {
-  int sum=0;
-  while(n!=0)
-  {
-    sum=sum+n%10;
-    n/=10;
-  }
-  if(sum>=10)
-  {
-    return fun(sum);
-  }
-  else
-  {
-    return sum;
-  }
-}
-int main() 
+public:
+    int u, v, c;
+    Edge(int u, int v, int c)
+    {
+        this->u = u;
+        this->v = v;
+        this->c = c;
+    }
+};
+const int N = 1e5 + 5;
+int dis[N];
+int main()
 {
-   int x;
-   cin>>x;
-   cout<<fun(x)<<nl;
+  //freopen("ICA-7.txt","r",stdin);
+    int n, e;
+    cin >> n >> e;
+    vector<Edge> EdgeList;
+    while (e--)
+    {
+        int u, v, c;
+        cin >> u >> v >> c;
+        EdgeList.push_back(Edge(u, v, c));
+    }
+    for (int i = 0; i < n; i++)
+    {
+        dis[i] = INT_MAX;
+    }
+    dis[0] = 0;
+    for (int i = 1; i <= n - 1; i++)
+    {
+        for (Edge ed : EdgeList)
+        {
+            int u, v, c;
+            u = ed.u;
+            v = ed.v;
+            c = ed.c;
+            if (dis[u] < INT_MAX && dis[u] + c < dis[v])
+            {
+                dis[v] = dis[u] + c;
+            }
+        }
+    }
+    bool cycle = false;
+    for (Edge ed : EdgeList)
+    {
+        int u, v, c;
+        u = ed.u;
+        v = ed.v;
+        c = ed.c;
+        if (dis[u] < INT_MAX && dis[u] + c < dis[v])
+        {
+            cycle = true;
+            break;
+        }
+    }
+    if (cycle)
+    {
+        cout << "Cycle found. No answer" << endl;
+    }
+    else
+    {
+        for (int i = 0; i < n; i++)
+            cout << i << " -> " << dis[i] << endl;
+    }
+    return 0;
 }

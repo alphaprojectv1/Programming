@@ -5,10 +5,14 @@ typedef long long ll;
 // #define ll long long
 using namespace std;
 const int N=1e5+5;
-vector<int> v[N];
 int main()
 {
-    int a=1,b=2;
-    a=++a+b+++a+b,b=a+b-- - --a-b--;
-    cout<<a<<blk<<b;
+    int m,n,a;
+    cin>>m>>n>>a;
+    if(m==1 && n==a && a==1)
+    {
+        cout<<1;
+        return 0;
+    }
+    cout<<(m-a)*(n-a);
 }
