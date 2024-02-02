@@ -5,8 +5,8 @@ typedef long long ll;
 // #define ll long long
 using namespace std;
 const int N=1e5+5;
-ll vis[105][105];
-ll ts,r,c,si,sj,di,dj,l;
+ll vis[105][105],level[105][105];
+ll ts,r,c,si,sj,di,dj;
 pair<int,int> mov[8]={
     {2,-1},{2,1},
     {-2,-1},{-2,1},
@@ -22,6 +22,7 @@ void bfs(ll i,ll j)
     queue<pair<int,int>>q;
     q.push({i,j});
     vis[i][j]=1;
+    level[i][j]=0;
     while(!q.empty())
     {
         pair<int,int>p=q.front();
@@ -34,7 +35,7 @@ void bfs(ll i,ll j)
             {
                 q.push({newx,newy});
                 vis[newx][newy]=1;
-                l++;
+                level[newx][newy]=level[x][y]+1;
             }
         }
     }
@@ -44,12 +45,24 @@ int main()
     cin>>ts;
     while(ts--)
     {
+        for(int i=0;i<105;i++)
+        {
+            for(int j=0;j<105;j++)
+            {
+                vis[i][j]=0,level[i][j]=0;
+                //cout<<vis[i][j]<<level[i][j]<<blk;
+            }
+            //cout<<nl;
+        }
         cin>>r>>c>>si>>sj>>di>>dj;
-        vis[105][105]={0},l=0;
         bfs(si,sj);
         if(vis[di][dj])
         {
-            cout<<"YES"<<nl;
+            cout<<level[di][dj]<<nl;
+        }
+        else
+        {
+            cout<<-1<<nl;
         }
     }
 }
