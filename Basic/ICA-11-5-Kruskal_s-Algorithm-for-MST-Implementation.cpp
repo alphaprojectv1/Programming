@@ -8,4 +8,5 @@
 #else
 #define debug(a)
 #endif
+const int N=1e5+5;
 using namespace std;

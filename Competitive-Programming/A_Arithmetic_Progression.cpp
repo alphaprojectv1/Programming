@@ -9,3 +9,12 @@
 #define debug(a)
 #endif
 using namespace std;
+int main()
+{
+    int a,b,d;
+    cin>>a>>b>>d;
+    for(int i=a;i<=b;i=i+d)
+    {
+        cout<<i<<blk;
+    }
+}

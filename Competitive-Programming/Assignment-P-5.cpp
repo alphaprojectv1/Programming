@@ -9,3 +9,7 @@
 #define debug(a)
 #endif
 using namespace std;
+int main()
+{
+    
+}
