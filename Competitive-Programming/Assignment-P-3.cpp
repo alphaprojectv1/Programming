@@ -8,6 +8,7 @@
 #else
 #define debug(a)
 #endif
+const int N=1e5+5;
 using namespace std;
 int main()
 {
@@ -36,23 +37,32 @@ int main()
     }
     else if(op==4)
     {
-        // int sum=-12,i=2;
-        // cout<<-10<<blk<<sum<<blk;
-        // // for(int i=2;sum<-50;i*=2)
-        // // {
-        // //     sum+=i;
-        // //     cout<<sum<<blk;
-        // // }
-        // while(sum!=-50)
-        // {
-        //     i*=2;
-        //     sum-=i;
-        //     cout<<sum<<blk;
-        // }
-        for(int a=-10;a>=-10;)
+        int n;
+        cin>>n;
+        int a[N]={0};
+        a[0]=-10,a[1]=2;
+        if(n==0)
         {
-            cout<<a<<nl;
-            for(a=-12;a>=-42;a-=x)
+            cout<<a[0]<<nl;
+        }
+        if(n==1)
+        {
+            cout<<a[0]<<nl;
+            cout<<a[1]<<nl;
+        }
+        else
+        {
+        cout<<a[0]<<nl;
+        cout<<-a[1]+a[0]<<nl;
+        for(int i=2;i<n;i++)
+        {
+            a[i]=a[i-1]*2;
+            cout<<a[0]-a[i-1]*2<<nl;
+        }
         }
     }
 }
+/*
+write a for statement to print each of following sequeces of integer:
+-1,-12,-14,-18,-26,-42
+*/

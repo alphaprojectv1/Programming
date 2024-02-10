@@ -9,24 +9,32 @@
 #define debug(a)
 #endif
 using namespace std;
-double fact(double x)
+// double fact(double x)
+// {
+//     double res=1;
+//     while(x)
+//     {
+//         res*=x;
+//         x--;
+//     }
+//     return res;
+// }
+int main()
 {
-    double res=1;
+ double n,dif,pre=0,cur=1,e=0;
+ cin>>n;
+ //cout<<fact(n)<<nl;
+ for(int i=1;i<=n;i++)
+ {
+    double res=1,x=i;
     while(x)
     {
         res*=x;
         x--;
     }
-    return res;
-}
-int main()
-{
- double n,dif,pre=0,cur=1,e=0;
- cin>>n;
- cout<<fact(n)<<nl;
- for(int i=1;i<=n;i++)
- {
-    cur=cur+(1/fact(i));
+    cur+=(1/res);
+    res=1;
+    //cur=cur+(1/fact(i));
     dif=cur-pre;
     if(dif<=0.00001)
     {
