@@ -39,7 +39,7 @@ int main()
     {
         int n;
         cin>>n;
-        int a[N]={0};
+        int a[N]={0};//N=1e5+5
         a[0]=-10,a[1]=2;
         if(n==0)
         {
