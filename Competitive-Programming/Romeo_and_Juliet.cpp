@@ -11,10 +11,18 @@
 using namespace std;
 const int N=1e5+5;
 vector<int> v[N];
-bool vis[N]={0};
-int level[N]={0};
+bool vis[N];
+int level[N];
 int des,c;
-bool bfs(ll src)
+void reset(int n)
+{
+    for(int i=0;i<n;i++)
+    {
+        vis[i]=0;
+        level[i]=-1;
+    }
+}
+void bfs(ll src)
 {
     queue<int>q;
     q.push(src);
@@ -23,31 +31,17 @@ bool bfs(ll src)
     while(!q.empty())
     {
         int pr=q.front();
-        if(pr==des)
-        {
-            cout<<level[pr]<<nl;
-            //return;
-            if(level[pr]<=c)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
         q.pop();
         for(auto it:v[pr])
         {
             if(!vis[it])
             {
                 level[it]=level[pr]+1;
-                vis[src]=1;
+                vis[it]=1;
                 q.push(it);
             }
         }
     }
-    //return false;
 }
 int main()
 {
@@ -60,10 +54,11 @@ int main()
         v[a].push_back(b);
         v[b].push_back(a);
     }
-    ll src,des,c;
-    cin>>src>>des>>c;
-    //cout<<level[des]<<nl;
-    if(bfs(src))
+    ll x,y,c;
+    cin>>x>>y>>c;
+    reset(n);
+    bfs(x);
+    if(level[y]!=(-1) && level[y]<= c*2)
     {
         cout<<"YES"<<nl;
     }
@@ -72,3 +67,33 @@ int main()
         cout<<"NO";
     }
 }
+/*
+Input 1:
+8 9
+0 1
+4 0
+4 2
+2 3
+1 3
+2 5
+5 6
+6 7
+6 3
+4 7 2
+Output:
+YES
+Input 2:
+8 9
+0 1
+4 0
+4 2
+2 3
+1 3
+2 5
+5 6
+6 7
+6 3
+2 7 1
+Output:
+No
+*/
