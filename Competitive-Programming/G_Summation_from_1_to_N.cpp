@@ -10,18 +10,10 @@
 #endif
 const int N=1e5+5;
 using namespace std;
-ll fact(int n)
-{
-    if(n==0)
-    {
-        return 1;
-    }
-    ll multi=n*fact(n-1);
-    return multi;
-}
 int main()
 {
-    int n;
+    ll n;
     cin>>n;
-    cout<<fact(n);
+    n=(n*(n+1))/2;
+    cout<<n;
 }
