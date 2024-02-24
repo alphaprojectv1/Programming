@@ -38,7 +38,7 @@ void dfs(int x,int y)
     cnt++;
     for(int i=0;i<4;i++)
     {
-        if(!valid(x+d[i].first,y+d[i].second) && !vis[x+d[i].first][y+d[i].second])
+        if(valid(x+d[i].first,y+d[i].second) && !vis[x+d[i].first][y+d[i].second])
         {
             dfs(x+d[i].first,y+d[i].second);
         }

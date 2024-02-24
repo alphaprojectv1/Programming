@@ -321,35 +321,63 @@
 //    dfs(1);
 //    cout<<cnt;
 // }
+// #include<bits/stdc++.h>
+// #define nl endl
+// #define blk " "
+// #define int long long
+// const int N=1e5+5;
+// using namespace std;
+// int n,e;
+// class Edge{
+// public:
+// 	int a,b,c;
+// 	Edge(int a,int b,int c)
+// 	{
+// 		this->a=a;
+// 		this->b=b;
+// 		this->c=c;
+// 	}
+// };
+// int32_t main()
+// {
+// 	cin>>n>>e;
+// 	vector<int>v;
+// 	while(e--)
+// 	{
+// 		int a,b,c;
+// 		cin>>a>>b>>c;
+// 		v.push_back({a,b,c});
+// 	}
+// 	for(auto it:v)
+// 	{
+// 		cout<<it.a<<blk<<it.b<<blk<<it.c<<nl;
+// 	}
+// }
 #include<bits/stdc++.h>
-#define nl endl
-#define blk " "
+#include <stdio.h>
 #define int long long
+#define nl "\n"
+#define blk " "
+#ifndef ONLINE_JUDGE
+#define debug(a) cout<<#a<<blk<<a<<nl;
+#else
+#define debug(a)
+#endif
 const int N=1e5+5;
 using namespace std;
-int n,e;
-class Edge{
-public:
-	int a,b,c;
-	Edge(int a,int b,int c)
+int fact(int n)
+{
+	int ans=n;
+	if(n==1)
 	{
-		this->a=a;
-		this->b=b;
-		this->c=c;
+		return 1;
 	}
-};
+	ans*=fact(n-1);
+	return ans;
+}
 int32_t main()
 {
-	cin>>n>>e;
-	vector<int>v;
-	while(e--)
-	{
-		int a,b,c;
-		cin>>a>>b>>c;
-		v.push_back({a,b,c});
-	}
-	for(auto it:v)
-	{
-		cout<<it.a<<blk<<it.b<<blk<<it.c<<nl;
-	}
+  int n;
+  cin>>n;
+  cout<<fact(n);
 }

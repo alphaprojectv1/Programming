@@ -1,121 +1,61 @@
-// // #include<bits/stdc++.h>
-// // #include <stdio.h>
-// // #define ll long long
-// // #define nl "\n"
-// // #define blk " "
-// // #ifndef ONLINE_JUDGE
-// // #define debug(a) cout<<#a<<blk<<a<<nl;
-// // #else
-// // #define debug(a)
-// // #endif
-// // using namespace std;
-// // const int N=1e5+5;
-// // ll binpow(ll x,ll y)
-// // {
-// //     if(y==0)
-// //     {
-// //         return 1;
-// //     }
-// //     ll res=1;
-// //     while(y)
-// //     {
-// //         if(y&1)
-// //         {
-// //             res=res*x;
-// //         }
-// //         x*=x;
-// //         y>>=1;
-// //     }
-// //     return res;
-// // }
-// // int main()
-// // {
-// //     cout<<binpow(2,2);
-// // }
-// // #include<bits/stdc++.h>
-// // #define ll long long
-// // #define nl "\n"
-// // #define blk " "
-// // using namespace std;
-// // int main()
-// // {
-// //     int n;
-// //         cin>>n;
-// //         int a[1005]={0};//N=1e5+5
-// //         a[0]=-10,a[1]=2;
-// //         if(n==0)
-// //         {
-// //             cout<<a[0]<<nl;
-// //         }
-// //         if(n==1)
-// //         {
-// //             cout<<a[0]<<nl;
-// //             cout<<a[1]<<nl;
-// //         }
-// //         else
-// //         {
-// //         cout<<a[0]<<nl;
-// //         cout<<-a[1]+a[0]<<nl;
-// //         for(int i=2;i<n;i++)
-// //         {
-// //             a[i]=a[i-1]*2;
-// //             cout<<a[0]-a[i-1]*2<<nl;
-// //         }
-// //         }
-// // }
-// #include<bits/stdc++.h>
-// #include <stdio.h>
-// #define ll long long
-// #define nl "\n"
-// #define blk " "
-// #ifndef ONLINE_JUDGE
-// #define debug(a) cout<<#a<<blk<<a<<nl;
-// #else
-// #define debug(a)
-// #endif
-// const int N=1e5+5;
-// using namespace std;
-// int main()
-// {
-//     int n,m;
-//     cin>>n;
-//     cout<<n<<blk;
-//     while(1)
-//     {
-//         if(n==1)
-//         {
-//             break;
-//         }
-//         //m++;
-//         if(n%2!=0)
-//         {
-//             n=(3*n)+2;
-//             cout<<n<<blk;
-//         }
-//         else if(n%2==0)
-//         {
-//             n/=2;
-//             cout<<n<<blk;
-//         }
-//         else if(n==1 || n==m)
-//         {
-//             break;
-//         }
-//     }
-// }
 #include<bits/stdc++.h>
-#include <stdio.h>
-#define ll long long
-#define nl "\n"
+#define nl endl
 #define blk " "
-#ifndef ONLINE_JUDGE
-#define debug(a) cout<<#a<<blk<<a<<nl;
-#else
-#define debug(a)
-#endif
-const int N=1e5+5;
+#define int long long
 using namespace std;
-int main()
+int ts,r,c,vis[1005][1005],si,sj,cnt=0;
+pair<int,int> v[4]={{0,1},{0,-1},{1,0},{-1,0}};
+char a[1005][1005];
+bool valid(int x,int y)
 {
-    
+	if(x>=0 && x<r && y>=0 && y<c && !vis[x][y] && a[x][y]!='#')
+	{
+		return 1;
+	}
+	return 0;
 }
+void dfs(int x,int y)
+{	
+	vis[x][y]=1;
+	cnt++;
+	for(int i=0;i<4;i++)
+	{
+		int nx=x+v[i].first,ny=y+v[i].second;
+		if(valid(nx,ny))
+		{
+			dfs(nx,ny);
+		}
+	}
+
+}
+int32_t main()
+{
+	//freopen("input.txt","r",stdin);
+	//freopen("sample.txt","a",stdout);
+	int ts,k=1;
+	cin>>ts;
+	while(ts--)
+	{
+		
+		cin>>c>>r;
+		for(int i=0;i<r;i++)
+		{
+			for(int j=0;j<c;j++)
+			{
+				cin>>a[i][j];
+				vis[i][j]=0;
+				if(a[i][j]=='@')
+				{
+					si=i;
+					sj=j;
+				}
+			}
+		}
+		cout<<"Case "<<k<<":"<<blk;
+		dfs(si,sj);
+		cout<<cnt<<nl;
+		cnt=0;
+		k++;
+	}
+}
+
