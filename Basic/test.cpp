@@ -353,6 +353,34 @@
 // 		cout<<it.a<<blk<<it.b<<blk<<it.c<<nl;
 // 	}
 // }
+// #include<bits/stdc++.h>
+// #include <stdio.h>
+// #define int long long
+// #define nl "\n"
+// #define blk " "
+// #ifndef ONLINE_JUDGE
+// #define debug(a) cout<<#a<<blk<<a<<nl;
+// #else
+// #define debug(a)
+// #endif
+// const int N=1e5+5;
+// using namespace std;
+// int fact(int n)
+// {
+// 	int ans=n;
+// 	if(n==1)
+// 	{
+// 		return 1;
+// 	}
+// 	ans*=fact(n-1);
+// 	return ans;
+// }
+// int32_t main()
+// {
+//   int n;
+//   cin>>n;
+//   cout<<fact(n);
+// }
 #include<bits/stdc++.h>
 #include <stdio.h>
 #define int long long
@@ -365,19 +393,15 @@
 #endif
 const int N=1e5+5;
 using namespace std;
-int fact(int n)
-{
-	int ans=n;
-	if(n==1)
-	{
-		return 1;
-	}
-	ans*=fact(n-1);
-	return ans;
-}
 int32_t main()
 {
-  int n;
-  cin>>n;
-  cout<<fact(n);
+ unordered_set<int>st;
+ st.insert(1);
+ st.insert(3);
+ st.insert(2);
+ st.insert(4);
+ for(auto it:st)
+ {
+	cout<<it<<blk;
+ }
 }

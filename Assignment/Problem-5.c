@@ -17,7 +17,7 @@ void solve(char *ch,int m,int n)
 {
     if(m==n)
     {
-        printf("%s\n",ch);
+        printf("%s ",ch);
     }
     else
     {
@@ -33,9 +33,7 @@ void solve(char *ch,int m,int n)
 }
 int main()
 {
-    int n;
-    scanf("%d",&n);
-    char ch[n];
+    char ch[1000];
     scanf("%s",ch);
-    solve(ch,0,n-1);
+    solve(ch,0,strlen(ch)-1);
 }

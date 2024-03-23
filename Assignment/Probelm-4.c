@@ -30,9 +30,10 @@ snd
 int main()
 {
     char st[10][1000];
+    printf("Enter 10 words: ");
     for(int i=0;i<10;i++)
     {
-        gets(st[i]);
+        scanf("%s",&st[i]);
     }
     for(int i=0;i<9;i++)
     {

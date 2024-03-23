@@ -8,17 +8,16 @@ Lowest frequency of ['d'] is [ 1 ]
 #include<stdio.h>
 #include<ctype.h>
 #include<limits.h>
-const int N=1e5;
 int main()
 {
     printf("Enter any string: ");
-    char s[N];
-    gets(s);
+    char st[1000];
+    scanf("%s",st);
     int a[26]={0};
     for(int i=0;;i++)
     {
-        if(s[i]=='\0')break;
-        char tmp=tolower(s[i]);
+        if(st[i]=='\0')break;
+        char tmp=tolower(st[i]);
         a[tmp-'a']++;
     }
     int mn=INT_MAX;
@@ -32,5 +31,5 @@ int main()
             ch=(i+'a');
         }
     }
-    printf("Lowest frequency of [ %c ] is [ %d ]",ch,mn);
+    printf("Lowest frequency of ['%c'] is [ %d ]",ch,mn);
 }

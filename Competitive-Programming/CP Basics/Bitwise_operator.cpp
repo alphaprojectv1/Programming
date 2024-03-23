@@ -12,5 +12,5 @@ const int N=1e5+5;
 using namespace std;
 int main()
 {
-    cout<<(5^7);
+    
 }
